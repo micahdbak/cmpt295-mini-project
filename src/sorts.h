@@ -23,6 +23,10 @@ void grow_queue(struct queue *queue, uint64_t new_size);
 void enqueue(struct queue *queue, const void *item);
 bool dequeue(struct queue *queue, void *item);
 
+// general functions
+
+void printarr(uint64_t *arr, uint64_t length);
+
 // quick sort
 void quicks(uint64_t *arr, uint64_t length);
 

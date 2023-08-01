@@ -2,7 +2,6 @@
 
 #include "sorts.h"
 
-#include <stdio.h>
 #include <string.h> // memcpy
 
 // reference for struct queue
@@ -28,8 +27,6 @@ void free_queue(struct queue *queue) {
 }
 
 void grow_queue(struct queue *queue, uint64_t capacity) {
-	printf("\tqueue: grew to %lu items (%lukb)\n", capacity, (queue->item_size*capacity)/1024);
-
 	queue->items = (uint8_t *)realloc(queue->items, queue->item_size*capacity);
 
 	// reduce occupied space
