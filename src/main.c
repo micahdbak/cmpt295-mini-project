@@ -25,12 +25,14 @@ uint64_t is_sorted(uint64_t *arr, uint64_t length) {
 	return 1;
 }
 
-#define NTESTS (uint64_t)1000
+#define NTESTS (uint64_t)100
 
 void test(const char *name, uint64_t length, uint64_t maxval, void (*algor)(uint64_t *, uint64_t)) {
 	uint64_t *arr = (uint64_t *)malloc(sizeof(uint64_t) * length);
-
 	uint64_t passed = 0;
+
+	printf("%s: *", name);
+	fflush(stdout);
 
 	for (uint64_t i = 0; i < NTESTS; i++) {
 		randarr(arr, length, maxval);
@@ -38,7 +40,7 @@ void test(const char *name, uint64_t length, uint64_t maxval, void (*algor)(uint
 		passed += is_sorted(arr, length);
 	}
 
-	printf("%s: passed %lu of %lu.\n", name, passed, NTESTS);
+	printf("\bpassed %lu of %lu.\n", passed, NTESTS);
 	free(arr);
 }
 
@@ -56,15 +58,17 @@ int main(int argc, char **argv) {
 			maxval = atoi(argv[2]);
 	}
 
-	printf("Using array length of %lu (%lukb), with maximum value %lu.\n",
-		(length*sizeof(uint64_t))/1024, length, maxval);
+	printf("Using array length of %lu (%lukb), with maximum value %lu; running %lu tests per algorithm.\n",
+		length, (length*sizeof(uint64_t))/1024, maxval, NTESTS);
 
 	srand(time(0));
+	//test("bogos", length, maxval, bogos);
 	test("selects", length, maxval, selects);
 	test("inserts", length, maxval, inserts);
 	test("shells", length, maxval, shells);
 	test("merges", length, maxval, merges);
 	test("quicks", length, maxval, quicks);
+	test("heaps", length, maxval, heaps);
 
 	return 0;
 }

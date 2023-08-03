@@ -43,6 +43,9 @@ void grow_queue(struct queue *queue, uint64_t new_size);
 void enqueue(struct queue *queue, const void *item);
 bool dequeue(struct queue *queue, void *item);
 
+// additional functions
+
+uint64_t is_sorted(uint64_t *arr, uint64_t length);
 void printarr(uint64_t *arr, uint64_t length);
 
 // quadratic sorting algorithms
@@ -51,9 +54,12 @@ void selects(uint64_t *arr, uint64_t length);
 void inserts(uint64_t *arr, uint64_t length);
 void shells(uint64_t *arr, uint64_t length);
 
+// bogo sort (bogos.c)
+void bogos(uint64_t *arr, uint64_t length);
+
 // nlogn sorting algorithms
 // heap sort (heaps.c)
-//void heaps(uint64_t *arr, uint64_t length);
+void heaps(uint64_t *arr, uint64_t length);
 // merge sort (merges.c)
 void merges(uint64_t *arr, uint64_t length);
 // quick sort (quicks.c)
