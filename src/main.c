@@ -1,3 +1,5 @@
+// main.c
+
 #include "sorts.h"
 
 #include <stdio.h> // printf
@@ -23,7 +25,7 @@ uint64_t is_sorted(uint64_t *arr, uint64_t length) {
 	return 1;
 }
 
-#define NTESTS (uint64_t)100
+#define NTESTS (uint64_t)1000
 
 void test(const char *name, uint64_t length, uint64_t maxval, void (*algor)(uint64_t *, uint64_t)) {
 	uint64_t *arr = (uint64_t *)malloc(sizeof(uint64_t) * length);
@@ -54,9 +56,14 @@ int main(int argc, char **argv) {
 			maxval = atoi(argv[2]);
 	}
 
-	printf("Using array length of %lu, with maximum value %lu.\n", length, maxval);
+	printf("Using array length of %lu (%lukb), with maximum value %lu.\n",
+		(length*sizeof(uint64_t))/1024, length, maxval);
 
 	srand(time(0));
+	test("selects", length, maxval, selects);
+	test("inserts", length, maxval, inserts);
+	test("shells", length, maxval, shells);
+	test("merges", length, maxval, merges);
 	test("quicks", length, maxval, quicks);
 
 	return 0;

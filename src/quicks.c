@@ -1,8 +1,6 @@
 // quicks.c
 
-#include "sorts.h" // stdint, stdbool, stdlib
-
-#include <stdio.h>
+#include "sorts.h"
 
 struct params {
 	uint64_t start, end;
