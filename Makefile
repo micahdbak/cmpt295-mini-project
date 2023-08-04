@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wpedantic -Wextra -std=c17 -march=haswell -O3
+CFLAGS = -Wall -Wpedantic -Wextra -march=haswell -O3
 
 bin:
 	mkdir -p bin

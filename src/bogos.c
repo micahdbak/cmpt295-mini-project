@@ -6,9 +6,11 @@
 
 void bogos(uint64_t *arr, uint64_t length) {
 	while (!is_sorted(arr, length)) {
-		for (uint64_t i = 1; i < length-1; i++) {
-			uint64_t j = i + (rand() % length-i);
-			swap(arr, i-1, j);
+		for (uint64_t i = 0; i < length; i++) {
+			uint64_t tmp = arr[i];
+			uint64_t j = rand() % length;
+			arr[i] = arr[j];
+			arr[j] = tmp;
 		}
 	}
 }
